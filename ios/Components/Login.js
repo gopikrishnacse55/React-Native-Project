@@ -114,7 +114,7 @@ export default class Login extends Component
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
       <View style = {styles.container}>
         <View style ={styles.logoContainer}>
-        <Text style = {styles.titleStyle}>Login</Text>
+        <Text style = {styles.titleStyle}>Ambica</Text>
         </View>
         <View style = {styles.textInputContainer}>
           <TextInput placeholder ="Enter Email" placeholderTextColor="grey" style={styles.textInputStyle} onChangeText = {(getText) => this.formValidation(getText,"Email")}></TextInput>
