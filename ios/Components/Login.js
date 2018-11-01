@@ -26,7 +26,7 @@ export default class Login extends Component
   }
 
 
-  clickItem() 
+  handleLogin() 
   {
     if (this.isValid())
     {
@@ -122,7 +122,7 @@ export default class Login extends Component
           <Text style={styles.ErrorStyle}>{this.state.passwordError}</Text>
         </View>
         <View style ={styles.buttonContainer}>
-          <TouchableOpacity style = {styles.buttonStyle} onPress = {()=>this.clickItem()}>
+          <TouchableOpacity style = {styles.buttonStyle} onPress = {()=>this.handleLogin()}>
           <Text style={styles.buttonTextStyle}>Login</Text>
           </TouchableOpacity>
           <View style={styles.MainContainer}>
