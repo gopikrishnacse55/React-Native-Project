@@ -38,15 +38,15 @@ export default class Login extends Component
     }
   }
 
-  formValidation(text,type)
+  formValidation(textValue,type)
   {
 
     if (type == "Email")
     {
-      this.setState({email : text})
-       if (text.length > 0)
+      this.setState({email : textValue})
+       if (textValue.length > 0)
        {
-         this.validateEmail(text);
+         this.validateEmail(textValue);
        }
        else
        {
@@ -56,8 +56,8 @@ export default class Login extends Component
     }
     else if(type == "Password")
     {
-      this.setState({password : text})
-        if (text.length >= 8)
+      this.setState({password : textValue})
+        if (textValue.length >= 8)
         {
           this.setState({passwordError : ''})
           
@@ -98,7 +98,7 @@ export default class Login extends Component
       alert("Enter Email");
       return false;
 
-    } else if (password.length === 0)
+    }else if (password.length === 0)
      {
        alert("Enter Password")
        return false;
@@ -116,9 +116,9 @@ export default class Login extends Component
         <Text style = {styles.titleStyle}>Login</Text>
         </View>
         <View style = {styles.textInputContainer}>
-          <TextInput placeholder ="Enter Email" placeholderTextColor="grey" style={styles.textInputStyle} onChangeText = {(text) => this.formValidation(text,"Email")}></TextInput>
+          <TextInput placeholder ="Enter Email" placeholderTextColor="grey" style={styles.textInputStyle} onChangeText = {(getText) => this.formValidation(getText,"Email")}></TextInput>
           <Text style={styles.ErrorStyle}>{this.state.emailError}</Text>
-          <TextInput placeholder ="Enter Password" placeholderTextColor="grey" secureTextEntry = {true} style={styles.textInputStyle} onChangeText = {(text)=>this.formValidation(text,"Password")}></TextInput>
+          <TextInput placeholder ="Enter Password" placeholderTextColor="grey" secureTextEntry = {true} style={styles.textInputStyle} onChangeText = {(getText)=>this.formValidation(getText,"Password")}></TextInput>
           <Text style={styles.ErrorStyle}>{this.state.passwordError}</Text>
         </View>
         <View style ={styles.buttonContainer}>
