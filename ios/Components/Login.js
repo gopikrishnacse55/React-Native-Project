@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,TextInput,TouchableOpacity,Image,Alert} from 'react-native';
+import {Platform, StyleSheet, Text, View,TextInput,TouchableOpacity,Image,Alert,KeyboardAvoidingView} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import Dashboard from './Dashboard';
 export default class Login extends Component 
@@ -111,6 +111,7 @@ export default class Login extends Component
   render() {
     var {navigate} = this.props.navigation;
     return (
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
       <View style = {styles.container}>
         <View style ={styles.logoContainer}>
         <Text style = {styles.titleStyle}>Login</Text>
@@ -131,10 +132,10 @@ export default class Login extends Component
             <View style={styles.SeparatorLine} />
             <Text style={styles.TextStyle}> Login Using Facebook </Text>
             </TouchableOpacity>
-            
         </View>
         </View>
     </View>
+    </KeyboardAvoidingView>
     );
   }
 }
