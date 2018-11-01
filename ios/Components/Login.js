@@ -237,6 +237,7 @@ const styles = StyleSheet.create ({
 ErrorStyle :
 {
   color : 'red',
-  margin : 8
+  margin : 8,
+  fontSize : 12
 }
 })
