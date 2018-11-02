@@ -16,9 +16,26 @@ export default class ItemList extends Component
   render() {
     var {params} = this.props.navigation.state;
     return (
-        <View style = {styles.container}>
-            <Text>Item List</Text>
+        <View style={{flex: 1}}>
+        <View style={{flex : 3,  flexDirection: 'row', backgroundColor: 'powderblue'}}>
+            <View style={{flex : 2, backgroundColor : 'red'}}>
+            </View>
+            <View style={{flex : 2,backgroundColor : 'orange'}}>
+            </View>
         </View>
+        <View style={{flex : 3,flexDirection: 'row', backgroundColor: 'skyblue'}}>
+        <View style={{flex : 2, backgroundColor : 'blue'}}>
+            </View>
+            <View style={{flex : 2,backgroundColor : 'purple'}}>
+            </View>
+        </View>
+        <View style={{flex : 3,flexDirection: 'row', backgroundColor: 'skyblue'}}>
+        <View style={{flex : 2, backgroundColor : 'yellow'}}>
+            </View>
+            <View style={{flex : 2,backgroundColor : 'green'}}>
+            </View>
+        </View>
+      </View>
     );
   }
 }

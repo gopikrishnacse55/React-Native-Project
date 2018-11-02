@@ -15,7 +15,7 @@ export default class ItemDetails extends Component
 
   static navigationOptions = ({navigation}) =>
   ({
-    title : "Dashboard",
+    title : "Item Details",
     headerStyle : {
         backgroundColor : '#1E90FF',
     },   
