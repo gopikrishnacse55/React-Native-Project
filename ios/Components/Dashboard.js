@@ -7,8 +7,9 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,TextInput,FlatList,Image,ActivityIndicator} from 'react-native';
-import APIData from '../Components/APIData'
+import {Platform, StyleSheet, Text, View,TextInput,FlatList,Image,ActivityIndicator,TouchableOpacity} from 'react-native';
+import APIData from '../Components/APIData';
+import { createStackNavigator } from 'react-navigation';
 export default class Dashboard extends Component 
 {
 
@@ -21,6 +22,12 @@ export default class Dashboard extends Component
     }
   }
 
+  // getItemFromListView(itemTitle,itemPrice)
+  // {
+
+  //   alert(itemTitle,itemPrice);
+  //   this.props.navigation.navigate('Item_Details',{itemTitle,itemPrice})
+  // }
 
 FlatListItemSeparator = () =>
  {
@@ -42,7 +49,7 @@ async componentDidMount()
 
   render() 
   {
-
+    var {navigate} = this.props.navigation;
       if (this.state.isLoadingIndicator)
       {
         return (
@@ -53,16 +60,20 @@ async componentDidMount()
       }
       else
       {
-        return(
 
+        return(
           <View style = {styles.container}>
           <FlatList
                    data={this.state.dealsArray}
                    ItemSeparatorComponent = {this.FlatListItemSeparator}
-                   renderItem={({item}) => <View style = {styles.container}><Text  style = {styles.welcome}>Title : {item.title}</Text>
-                   <Text  style = {styles.priceStyle}>Price : {item.price}</Text>
-                   <Image style = {styles.imageStyle} source={{uri: item.media[0]}}/>
+                   renderItem={({item}) => 
+                   <TouchableOpacity onPress = {()=>navigate("Item_Details",{item})}>
+                    <View style = {styles.container}>
+                        <Text  style = {styles.welcome}>Title : {item.title}</Text>
+                        <Text  style = {styles.priceStyle}>Price : {item.price}</Text>
+                       <Image style = {styles.imageStyle} source={{uri: item.media[0]}}/>
                    </View>
+                   </TouchableOpacity>
                  }
                />
         </View>

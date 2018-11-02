@@ -1,6 +1,7 @@
 import { createStackNavigator } from 'react-navigation';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import ItemDetails from './ItemDetails';
 
 const AppNavigator = createStackNavigator({
   Login:{ 
@@ -20,6 +21,20 @@ const AppNavigator = createStackNavigator({
         fontSize : 20
       },
   }},
+
+  Item_Details : { screen : ItemDetails,navigationOptions : {
+    
+        title : "Item Details",
+        headerStyle : {
+            backgroundColor : '#1E90FF',
+        },   
+        headerTintColor : 'white',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize : 20
+          },
+      }},
+
 });
 
 export default AppNavigator;
