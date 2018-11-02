@@ -34,7 +34,7 @@ export default class Login extends Component
     }
     else
     {
-      // alert("Enter data");
+      alert("Fill All Required Fields");
     }
   }
 
@@ -57,16 +57,19 @@ export default class Login extends Component
     else if(type == "Password")
     {
       this.setState({password : textValue})
-        if (textValue.length >= 8)
-        {
-          this.setState({passwordError : ''})
-          
-        }
-        else
+        if (textValue.length == 0)
         {
           this.setState({passwordError : 'Enter Password'})
+          
         }
-
+        else if (textValue.length >=8 )
+        {
+          this.setState({passwordError : ''})
+        }
+        else if (textValue.length <8)
+        {
+          this.setState({passwordError : 'Password should be 8 or more than 8 charcters'})
+        }
     }
   
     
@@ -78,33 +81,63 @@ export default class Login extends Component
     {
         this.setState({emailError:'Enter valid Email'}) 
         this.setState({email : emailText});
+        return false;
     }
     else {
       this.setState({emailError:''})
       this.setState({email : emailText});
+      return true;
     }  
   }
 
   isValid() 
   {
+
+    let has_email =  false,isEmail = false,hasPassword = false,isPassword = false;
     const { email, password } = this.state;
-    if (email.length > 0 && password.length > 0) 
+
+    has_email = email.length != 0 ? true : false;
+    isEmail = this.validateEmail(email);
+
+    hasPassword = password.length != 0 ? true : false;
+    isPassword = password.length >= 8 ? true : false;
+
+   
+    if (has_email)
     {
-      return true;
+      this.setState({emailError:' '})
+      if(isEmail)
+      {
+        this.setState({emailError:' '})
+      }
+      else
+      {
+        this.setState({emailError:'Enter valid Email'})
+      }
+    }
+    else
+    {
+      this.setState({emailError:'Enter  Email'})
+    }
+    
+    if(hasPassword)
+    {
+      this.setState({passwordError : ''})
+      if(isPassword)
+      {
+        this.setState({passwordError : ''})
+      }
+      else
+      {
+        this.setState({passwordError : 'Password should be 8 or more than 8 charcters'})
+      }
+    }
+    else
+    {
+      this.setState({passwordError : 'Enter Password'})
     }
 
-    if (email.length === 0) 
-    {
-      alert("Enter Email");
-      return false;
-
-    }else if (password.length === 0)
-     {
-       alert("Enter Password")
-       return false;
-    }
-
-    return true;
+    return has_email && isEmail && hasPassword && isPassword;
   }
 
 
