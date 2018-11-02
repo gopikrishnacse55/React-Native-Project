@@ -55,6 +55,7 @@ async componentDidMount()
         return (
           <View style={styles.indicatorStyle}>
               <ActivityIndicator  size="large" color="black"/>
+              <Text>Loading..</Text>
           </View>
         )
       }
