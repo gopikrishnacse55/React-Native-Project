@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View,TextInput,TouchableOpacity,Image,Alert,KeyboardAvoidingView} from 'react-native';
-import {StackNavigator} from 'react-navigation';
+// import {StackNavigator} from 'react-navigation';
 import Dashboard from './Dashboard';
 export default class Login extends Component 
 {

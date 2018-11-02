@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View,TextInput,FlatList,Image,ActivityIndicator,TouchableOpacity} from 'react-native';
 import APIData from '../Components/APIData';
-import { createStackNavigator } from 'react-navigation';
+// import { createStackNavigator } from 'react-navigation';
 export default class Dashboard extends Component 
 {
 
@@ -45,6 +45,7 @@ async componentDidMount()
     dealsArray : deals,
     isLoadingIndicator : false
   })
+
 }
 
   render() 
