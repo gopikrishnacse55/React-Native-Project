@@ -7,9 +7,10 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,TextInput,TouchableOpacity,Image,Alert,KeyboardAvoidingView} from 'react-native';
+import {Platform, StyleSheet, Text, View,TextInput,TouchableOpacity,Image,Alert,KeyboardAvoidingView,AsyncStorage} from 'react-native';
 // import {StackNavigator} from 'react-navigation';
 import Dashboard from './Dashboard';
+const userId = "USERID";
 export default class Login extends Component 
 {
 
@@ -25,12 +26,35 @@ export default class Login extends Component
     }
   }
 
+  async setAuthentication() 
+  {
+    await AsyncStorage.setItem('USERID', JSON.stringify(userId));
+    this.props.navigation.navigate('Dash_board');
+  }
+
+  async getAuthentication() {
+    try {
+         const value = await AsyncStorage.getItem('USERID');
+           if (value !== null)
+            {
+              this.props.navigation.navigate('Dash_board');
+           }
+        } catch (error) {
+            // Error retrieving data
+      }
+   }
+
+
+  componentDidMount()
+  {
+    this.getAuthentication(); 
+  }
 
   handleLogin() 
   {
     if (this.isValid())
     {
-      this.props.navigation.navigate('Dash_board');
+      this.setAuthentication();
     }
     else
     {

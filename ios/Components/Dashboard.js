@@ -7,11 +7,20 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,TextInput,FlatList,Image,ActivityIndicator,TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View,TextInput,FlatList,Image,ActivityIndicator,TouchableOpacity,Button,AsyncStorage} from 'react-native';
 import APIData from '../Components/APIData';
 // import { createStackNavigator } from 'react-navigation';
 export default class Dashboard extends Component 
 {
+
+
+  static navigationOptions = ({navigation}) =>
+  ({
+      headerRight : 
+      (
+        <Button onPress = {() => AsyncStorage.removeItem('USERID')} title="Log out" color='white'></Button>
+      )
+  });
 
   constructor(props)
   {
