@@ -12,15 +12,20 @@ import APIData from '../Components/APIData';
 // import { createStackNavigator } from 'react-navigation';
 export default class Dashboard extends Component 
 {
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state
 
+    return {
+      headerRight: <Button title="Logout" color="white" onPress={() => params.handleRemoveAuth()} />
+    }
+  }
 
-  static navigationOptions = ({navigation}) =>
-  ({
-      headerRight : 
-      (
-        <Button onPress = {() => AsyncStorage.removeItem('USERID')} title="Log out" color='white'></Button>
-      )
-  });
+handleLogout = () =>
+{
+  AsyncStorage.removeItem('USERID');
+  this.props.navigation.goBack();
+  alert("Logout Successfully");
+}
 
   constructor(props)
   {
@@ -49,6 +54,7 @@ FlatListItemSeparator = () =>
 
 async componentDidMount()
 {
+  this.props.navigation.setParams({ handleRemoveAuth : this.handleLogout })
   const deals = await APIData.fetchDataFromAPI();
   this.setState({
     dealsArray : deals,
