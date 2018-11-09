@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,TextInput,FlatList,Image,ActivityIndicator,TouchableOpacity,Button,AsyncStorage} from 'react-native';
+import {Platform, StyleSheet, Text, View,TextInput,FlatList,Image,ActivityIndicator,TouchableOpacity,Button,AsyncStorage,Alert} from 'react-native';
 import APIData from '../Components/APIData';
 // import { createStackNavigator } from 'react-navigation';
 export default class Dashboard extends Component 
@@ -25,6 +25,19 @@ handleLogout = () =>
   AsyncStorage.removeItem('USERID');
   this.props.navigation.goBack();
   alert("Logout Successfully");
+}
+
+alertView = ()=>
+{
+  Alert.alert(
+    'Are you want to Logout',
+    '',
+    [
+      {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+      {text: 'Ok', onPress: this.handleLogout},
+    ],
+    { cancelable: false }
+  )
 }
 
   constructor(props)
@@ -54,7 +67,7 @@ FlatListItemSeparator = () =>
 
 async componentDidMount()
 {
-  this.props.navigation.setParams({ handleRemoveAuth : this.handleLogout })
+  this.props.navigation.setParams({ handleRemoveAuth : this.alertView })
   const deals = await APIData.fetchDataFromAPI();
   this.setState({
     dealsArray : deals,
